@@ -57,6 +57,15 @@
 				formObj.attr("method","get");
 				formObj.submit();
 			});
+			
+			$("#remove").click(function(e) {
+				e.preventDefault();
+				let conf = confirm("복구 불가. 지우실?");
+				if(confirm){
+					formObj.attr("action", "remove");
+					formObj.submit();
+				}				
+			});
 		});
 		
 	</script>
