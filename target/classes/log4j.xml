@@ -33,8 +33,17 @@
 	</logger>
 
 	<!-- Root Logger -->
+	<!-- 
+		우선순위
+		debug, - 개발정보
+		info,  - 정보
+		warn,  - 경고
+		error, - 사용자 스레드 죽는 정도의 오류
+		fetal - 서버상에 치명적인 오류
+		설정해둔 레벨 이상의 로그만 출력됨 
+	-->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

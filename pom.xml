@@ -200,7 +200,6 @@
 		    <version>1.16</version>
 		</dependency>
 		
-		
 	</dependencies>
     <build>
         <plugins>
@@ -238,6 +237,16 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-war-plugin</artifactId>
+			    <version>3.4.0</version>
+			    <configuration>
+			    	<failOnMissingWebXml>false</failOnMissingWebXml>
+			    </configuration>
+			</plugin>
+            
         </plugins>
     </build>
 </project>
