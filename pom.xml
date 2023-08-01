@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bitc</groupId>
 	<artifactId>board</artifactId>
-	<name>mvc_part06_board</name>
+	<name>mvc_part06_board_java</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 

@@ -1,5 +1,6 @@
 package net.koreate.board;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -13,12 +14,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bitc.board.config.RootConfig;
+import com.bitc.board.vo.BoardVO;
+import com.zaxxer.hikari.HikariConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= {
-		"classpath:/context/root/root-context.xml"
-})
-public class TestDataSource {
+@ContextConfiguration(
+	classes= {RootConfig.class}
+)
+public class RootConfigTest {
 	
+	@Autowired
+	HikariConfig hc;
+
 	@Autowired
 	DataSource ds;
 	
@@ -26,25 +34,18 @@ public class TestDataSource {
 	SqlSessionFactory sqlSessionFactory;
 	
 	@Test
-	public void testSession() {
+	public void sqlSessionFactory() {
 		SqlSession session = sqlSessionFactory.openSession();
-		System.out.println("session : "+session);
+		BoardVO vo = session.selectOne("com.bitc.board.dao.BoardDAO.read", 1);
+		System.out.println(vo);
 	}
 	
 	@Test
-	public void dataSource() {
-		Connection conn = null;
-		
-		try {
-			conn = ds.getConnection();
-			System.out.println(conn);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(conn != null) conn.close();
-			} catch (SQLException e) {}
-		}
+	public void hikari() throws SQLException {
+		System.out.println(hc);
+		Connection conn = ds.getConnection();
+		System.out.println(conn);
+		conn.close();	
 	}
 	
 }
